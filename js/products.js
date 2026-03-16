@@ -23,7 +23,14 @@ const products = [
     category: "jackets",
     featured: true
   },
-
+  {
+    id: 4,
+    title: "Slim Fit Chinos",
+    price: 18000,
+    image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&q=80&w=400",
+    category: "pants",
+    featured: true
+  },
   {
       id: 5,
       title: "Elegant Turtleneck",
