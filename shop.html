@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance | Shop</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .shop-header {
+            padding-top: 150px;
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-xl);
+        }
+        .shop-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        @media (max-width: 900px) {
+            .shop-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        .filters h3 {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .filter-list li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .filter-list a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .filter-list a:hover {
+            color: var(--accent-color);
+        }
+        .filter-list a.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Elegance</a>
+            
+            <nav class="nav-links">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="shop.html" class="active" data-i18n="nav_shop">Shop</a>
+                <a href="index.html#about" data-i18n="nav_about">About</a>
+                <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+                
+                <div class="header-actions mobile-only">
+                    <select id="lang-select-mobile" class="lang-switch" onchange="changeLanguage(this.value)">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                    </select>
+                    <a href="auth.html" data-i18n="btn_login">Login</a>
+                </div>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="lang-switch">
+                    <select id="lang-select">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                    </select>
+                </div>
+                <a href="auth.html" class="icon-btn" title="Login / Register">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+                <button class="icon-btn" id="cart-trigger" title="Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+            
+             <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="shop-header">
+        <div class="container text-center">
+            <h1 class="fade-in" data-i18n="nav_shop">Shop</h1>
+            <p class="fade-in" style="animation-delay: 0.2s; color: var(--text-secondary);">Explore the full modern collection.</p>
+        </div>
+    </div>
+
+    <!-- Shop Layout -->
+    <div class="container shop-layout">
+        <aside class="filters animate-on-scroll">
+            <h3>Categories</h3>
+            <ul class="filter-list" id="category-filters">
+                <li><a href="#" data-filter="all" class="active">All Products</a></li>
+                <li><a href="#" data-filter="suits">Suits</a></li>
+                <li><a href="#" data-filter="shirts">Shirts</a></li>
+                <li><a href="#" data-filter="jackets">Jackets</a></li>
+                <li><a href="#" data-filter="pants">Pants</a></li>
+            </ul>
+        </aside>
+        
+        <main>
+            <div class="product-grid" id="all-products">
+                <!-- Injected via JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="logo">Elegance</h3>
+                    <p data-i18n="hero_subtitle">Modern Men's Fashion.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <a href="index.html" data-i18n="nav_home">Home</a>
+                    <a href="shop.html" data-i18n="nav_shop">Shop</a>
+                    <a href="index.html#about" data-i18n="nav_about">About</a>
+                    <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="contact_follow">Follow Us</h4>
+                    <a href="https://www.instagram.com/elegance.mens.shop?igsh=MXhzcGN1OGtzcXcwZQ==" target="_blank">Instagram</a>
+                    <a href="https://www.tiktok.com/@elegance.mens.shop?_r=1&_t=ZS-94jHl1KBNJN" target="_blank">TikTok</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_rights">&copy; 2026 Elegance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 data-i18n="btn_cart">Your Cart</h3>
+            <button class="icon-btn" id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">₸0</span>
+            </div>
+            <a href="#" class="btn btn-primary w-100">Checkout</a>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('all-products');
+            const filters = document.querySelectorAll('#category-filters a');
+            
+            function renderAllProducts(category = 'all') {
+                const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+                
+                if (filtered.length === 0) {
+                    container.innerHTML = '<p>No products found in this category.</p>';
+                    return;
+                }
+                
+                container.innerHTML = filtered.map(product => `
+                    <div class="product-card fade-in">
+                        <div class="product-img-wrapper">
+                            <img src="${product.image}" alt="${product.title}" loading="lazy">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.title}</h3>
+                            <p class="product-price">${formatPrice(product.price)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            filters.forEach(filter => {
+                filter.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    filters.forEach(f => f.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const category = e.target.getAttribute('data-filter');
+                    renderAllProducts(category);
+                });
+            });
+            
+            renderAllProducts();
+        });
+    </script>
+</body>
+</html>
