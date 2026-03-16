@@ -149,7 +149,7 @@ function renderFeaturedProducts() {
             <div class="product-img-wrapper">
                 <img src="${product.image}" alt="${product.title}" loading="lazy">
                 <div class="product-overlay">
-                    <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
+                    <button class="btn btn-primary" onclick="addToCart(${product.id})" data-i18n="btn_add_cart">Add to Cart</button>
                 </div>
             </div>
             <div class="product-info">
@@ -158,6 +158,10 @@ function renderFeaturedProducts() {
             </div>
         </div>
     `).join('');
+    
+    if (typeof changeLanguage === 'function') {
+        changeLanguage(localStorage.getItem('lang') || 'en');
+    }
 }
 
 // Initialize

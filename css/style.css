@@ -197,6 +197,11 @@ img {
   font-size: 0.9rem;
 }
 
+.lang-switch select option {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
 .icon-btn {
   background: none;
   border: none;
@@ -208,6 +213,10 @@ img {
 
 .icon-btn:hover {
   color: var(--accent-color);
+}
+
+.mobile-only {
+  display: none;
 }
 
 .hamburger {

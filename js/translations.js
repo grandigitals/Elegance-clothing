@@ -6,6 +6,7 @@ const translations = {
     nav_contact: "Contact",
     btn_login: "Login",
     btn_cart: "Cart",
+    btn_add_cart: "Add to Cart",
     hero_title: "ELEVATE YOUR STYLE",
     hero_subtitle: "Discover the latest trends in men's fashion. Based in Astana, Kazakhstan.",
     hero_cta: "Shop Collection",
@@ -25,6 +26,7 @@ const translations = {
     nav_contact: "Контакты",
     btn_login: "Войти",
     btn_cart: "Корзина",
+    btn_add_cart: "В корзину",
     hero_title: "ПОДЧЕРКНИТЕ СВОЙ СТИЛЬ",
     hero_subtitle: "Откройте для себя последние тенденции мужской моды. Базируется в Астане, Казахстан.",
     hero_cta: "Смотреть Коллекцию",
@@ -44,6 +46,7 @@ const translations = {
     nav_contact: "Байланыс",
     btn_login: "Кіру",
     btn_cart: "Себет",
+    btn_add_cart: "Себетке қосу",
     hero_title: "ӨЗ СТИЛІҢІЗДІ КӨТЕРІҢІЗ",
     hero_subtitle: "Ерлер сәніндегі соңғы трендтерді ашыңыз. Астана, Қазақстанда орналасқан.",
     hero_cta: "Топтаманы көру",
@@ -67,16 +70,32 @@ function changeLanguage(lang) {
     }
   });
   localStorage.setItem('lang', lang);
+  
+  // Sync both selects
+  const langSelectDesktop = document.getElementById('lang-select');
+  if(langSelectDesktop && langSelectDesktop.value !== lang) langSelectDesktop.value = lang;
+  const langSelectMobile = document.getElementById('lang-select-mobile');
+  if(langSelectMobile && langSelectMobile.value !== lang) langSelectMobile.value = lang;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('lang') || 'en';
+  
+  // Also hook up listener to desktop variant if exists
   const langSelect = document.getElementById('lang-select');
   if(langSelect) {
-      langSelect.value = savedLang;
       langSelect.addEventListener('change', (e) => {
         changeLanguage(e.target.value);
       });
   }
+  
+  // Hook up listener to mobile variant if exists
+  const langSelectMobile = document.getElementById('lang-select-mobile');
+  if(langSelectMobile) {
+      langSelectMobile.addEventListener('change', (e) => {
+        changeLanguage(e.target.value);
+      });
+  }
+  
   changeLanguage(savedLang);
 });
