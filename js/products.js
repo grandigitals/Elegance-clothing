@@ -51,7 +51,10 @@ const products = [
 
 // formatting for Kazakhstan Tenge
 const formatPrice = (price) => {
-    return new Intl.NumberFormat('kk-KZ', { style: 'currency', currency: 'KZT', minimumFractionDigits: 0 }).format(price);
+    // Explicitly request the symbol "₸" instead of relying on default browser locale behavior
+    // Some browsers default to KZT instead of ₸
+    const formatted = new Intl.NumberFormat('kk-KZ', { style: 'currency', currency: 'KZT', minimumFractionDigits: 0 }).format(price);
+    return formatted.replace('KZT', '₸');
 };
 
 // Simple global cart array
